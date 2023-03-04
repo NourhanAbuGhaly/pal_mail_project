@@ -48,99 +48,101 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 0.h),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 25.h,
-            ),
-            CustomTextFiled(
-              hintText: 'Enter email',
-              controller: _emailController,
-            ),
-            SizedBox(
-              height: 25.h,
-            ),
-            CustomTextFiled(
-              hintText: 'Enter username',
-              controller: _nameController,
-            ),
-            SizedBox(
-              height: 25.h,
-            ),
-            CustomTextFiled(
-              hintText: 'Password',
-              obsecure: true,
-              controller: _passwordController,
-            ),
-            SizedBox(
-              height: 25.h,
-            ),
-            CustomTextFiled(
-              hintText: 'Confirm password',
-              obsecure: true,
-              controller: _ConfirmpasswordController,
-            ),
-            SizedBox(
-              height: 50.h,
-            ),
-            TextButton(
-              onPressed: () async {
-                await _performRegister();
-              },
-              child: Container(
-                width: double.infinity,
-                height: 48.h,
-                child: Center(
-                    child: Text(
-                  'SIGN UP',
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 25.h,
+              ),
+              CustomTextFiled(
+                hintText: 'Enter email',
+                controller: _emailController,
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              CustomTextFiled(
+                hintText: 'Enter username',
+                controller: _nameController,
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              CustomTextFiled(
+                hintText: 'Password',
+                obsecure: true,
+                controller: _passwordController,
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              CustomTextFiled(
+                hintText: 'Confirm password',
+                obsecure: true,
+                controller: _ConfirmpasswordController,
+              ),
+              SizedBox(
+                height: 50.h,
+              ),
+              TextButton(
+                onPressed: () async {
+                  await _performRegister();
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 48.h,
+                  child: Center(
+                      child: Text(
+                    'SIGN UP',
+                    style: GoogleFonts.poppins(
+                      fontSize: 14.sp,
+                      color: Colors.white,
+                    ),
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(22),
+                      gradient:
+                          LinearGradient(begin: Alignment.bottomLeft, colors: [
+                        primaryColor,
+                        Color(0xff6589FF),
+                      ])),
+                ),
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              Center(
+                child: Text(
+                  'OR',
                   style: GoogleFonts.poppins(
                     fontSize: 14.sp,
-                    color: Colors.white,
+                    color: Color(0xffA8A7A7),
                   ),
-                )),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
-                    gradient:
-                        LinearGradient(begin: Alignment.bottomLeft, colors: [
-                      primaryColor,
-                      Color(0xff6589FF),
-                    ])),
-              ),
-            ),
-            SizedBox(
-              height: 25.h,
-            ),
-            Center(
-              child: Text(
-                'OR',
-                style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  color: Color(0xffA8A7A7),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SocialMediaButton(
-                  imgName: 'face',
-                ),
-                SocialMediaButton(
-                  imgName: 'twitter',
-                ),
-                SocialMediaButton(
-                  imgName: 'google',
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-          ],
+              SizedBox(
+                height: 20.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SocialMediaButton(
+                    imgName: 'face',
+                  ),
+                  SocialMediaButton(
+                    imgName: 'twitter',
+                  ),
+                  SocialMediaButton(
+                    imgName: 'google',
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
 import '../../model/user.dart';
@@ -26,8 +29,10 @@ class AuthApiController {
       var jsonObject = jsonDecode(response.body)['token'];
       print(jsonObject);
       // print(jsonObject['token']);
-
-      SharedPrefController().getToken(token: jsonObject);
+      // var data = jsonDecode(response.body)['user'] as User;
+      SharedPrefController().save(user: jsonDecode(response.body)['user']);
+      print('yaaaaaaaaa${jsonDecode(response.body)['user']}');
+      SharedPrefController().saveToken(token: jsonObject);
       // print('${user.token} in api');
 
       return true;
@@ -56,8 +61,8 @@ class AuthApiController {
       var jsonObject = jsonDecode(response.body);
 
       print(jsonObject);
-      User user = User.fromJson(jsonObject);
-      await SharedPrefController().save(user: user);
+      SharedPrefController().save(user: jsonDecode(response.body)['user']);
+      print('yaaaaaaaaa${jsonDecode(response.body)['user']}');
       print(user.email);
       return true;
     } else if (response.statusCode != 500) {

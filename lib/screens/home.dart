@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pal_mail_project/screens/profile.dart';
+import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/utils/constant.dart';
 import '../widget/category_widget.dart';
 import '../widget/organization_name_box.dart';
@@ -58,10 +60,24 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Icon(Icons.menu),
-                CircleAvatar(
-                  backgroundImage: AssetImage('images/user.jpg'),
+              children: [
+                InkWell(
+                  child: Icon(Icons.menu),
+                  onTap: () {
+                    Navigator.pushNamed(context, Profile.id);
+                  },
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, SearchScreen.id);
+                        },
+                        icon: Icon(Icons.search)),
+                    CircleAvatar(
+                      backgroundImage: AssetImage('images/user.jpg'),
+                    ),
+                  ],
                 ),
               ],
             ),

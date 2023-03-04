@@ -1,8 +1,13 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:pal_mail_project/screens/home.dart';
+import 'package:pal_mail_project/screens/tag_screen.dart';
 
 import '../utils/constant.dart';
 import '../widget/custom_header.dart';
@@ -17,6 +22,12 @@ class NewInbox extends StatefulWidget {
 
 class _NewInboxState extends State<NewInbox> {
   bool isExpanded2 = false;
+  File? image;
+  Future  pickImage ()async{
+    final image=await ImagePicker().pickImage(source: ImageSource.gallery);
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +38,11 @@ class _NewInboxState extends State<NewInbox> {
           padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
-              CustomHeader(
-                title: 'New Inbox',
+              InkWell(
+                onTap: (){Navigator.pushNamed(context,HomeScreen.id );},
+                child: CustomHeader(
+                  title: 'New Inbox',
+                ),
               ),
               SizedBox(
                 height: 16.h,
@@ -245,7 +259,9 @@ class _NewInboxState extends State<NewInbox> {
                         ],
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, TagScreen.id);
+                          },
                           icon: Icon(
                             Icons.arrow_forward_ios,
                             size: 14.sp,

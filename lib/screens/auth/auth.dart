@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,129 +32,131 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
     return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                ClipPath(
-                  clipper: CurvedBottomClipper(),
-                  child: Container(
-                    width: double.infinity,
-                    height: 359.h,
-                    decoration: BoxDecoration(
-                        gradient:
-                            LinearGradient(end: Alignment.bottomLeft, colors: [
-                      primaryColor,
-                      Color(0xff6589FF),
-                    ])),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 47.h,
-                        ),
-                        Center(
-                          child: Image.asset(
-                            'images/palestine_bird.png',
-                            width: 56.w,
-                            height: 75.h,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        Center(
-                            child: Text(
-                          'ديوان رئيس الوزراء',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 170, right: 30, left: 30, bottom: 0),
-                  child: Container(
-                    height: _tabController.index == 1 ? 609.h : 620.h,
-                    width: 367.w,
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                      )
-                    ], borderRadius: BorderRadius.circular(60.r)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: 40.h, right: 54.w, left: 54.w, bottom: 0),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  ClipPath(
+                    clipper: CurvedBottomClipper(),
+                    child: Container(
+                      width: double.infinity,
+                      height: 359.h,
+                      decoration:const BoxDecoration(
+                          gradient:
+                              LinearGradient(end: Alignment.bottomLeft, colors: [
+                        primaryColor,
+                        Color(0xff6589FF),
+                      ])),
                       child: Column(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                  30.0.r,
-                                ),
-                                border: Border.all(color: primaryColor)),
-                            child: TabBar(
-                              dividerColor: Colors.transparent,
-                              controller: _tabController,
-                              indicatorSize: TabBarIndicatorSize.tab,
-
-                              // give the indicator a decoration (color and border radius)
-                              indicator: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  30.0.r,
-                                ),
-                                color: primaryColor,
-                              ),
-                              labelColor: Colors.white,
-                              unselectedLabelColor: primaryColor,
-                              tabs: [
-                                // first tab [you can add an icon using the icon property]
-                                Tab(
-                                  child: Text(
-                                    'Log In',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 14.sp,
-                                    ),
-                                  ),
-                                ),
-
-                                // second tab [you can add an icon using the icon property]
-                                Tab(
-                                  child: Text(
-                                    'Sign Up',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 14.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          SizedBox(
+                            height: 47.h,
+                          ),
+                          Center(
+                            child: Image.asset(
+                              'images/palestine_bird.png',
+                              width: 56.w,
+                              height: 75.h,
                             ),
                           ),
-
-                          Expanded(
-                            child: TabBarView(
-                              controller: _tabController,
-                              children: [
-                                // first tab bar view widget
-                                Login(),
-                                // second tab bar view widget
-                                SignUp(),
-                              ],
+                          SizedBox(
+                            height: 4.h,
+                          ),
+                          Center(
+                              child: Text(
+                            'ديوان رئيس الوزراء',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w400,
                             ),
-                          ), // Container(
+                          )),
                         ],
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 170, right: 30, left: 30, bottom: 0),
+                    child: Container(
+                      height: _tabController.index == 1 ? 609.h : 620.h,
+                      width: 367.w,
+                      decoration: BoxDecoration(boxShadow:const [
+                        BoxShadow(
+                          color: Colors.white,
+                        )
+                      ], borderRadius: BorderRadius.circular(60.r)),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 40.h, right: 54.w, left: 54.w, bottom: 0),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                    30.0.r,
+                                  ),
+                                  border: Border.all(color: primaryColor)),
+                              child: TabBar(
+                                dividerColor: Colors.transparent,
+                                controller: _tabController,
+                                indicatorSize: TabBarIndicatorSize.tab,
+
+                                // give the indicator a decoration (color and border radius)
+                                indicator: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    30.0.r,
+                                  ),
+                                  color: primaryColor,
+                                ),
+                                labelColor: Colors.white,
+                                unselectedLabelColor: primaryColor,
+                                tabs: [
+                                  // first tab [you can add an icon using the icon property]
+                                  Tab(
+                                    child: Text(
+                                      'Log In',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                  ),
+
+                                  // second tab [you can add an icon using the icon property]
+                                  Tab(
+                                    child: Text(
+                                      'Sign Up',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            Expanded(
+                              child: TabBarView(
+                                controller: _tabController,
+                                children: [
+                                  // first tab bar view widget
+                                  Login(),
+                                  // second tab bar view widget
+                                  SignUp(),
+                                ],
+                              ),
+                            ), // Container(
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pal_mail_project/screens/home.dart';
+import 'package:pal_mail_project/screens/status.dart';
 
 import '../utils/constant.dart';
 import '../widget/activity_box.dart';
@@ -50,8 +52,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 22.0),
-                  child: const Icon(Icons.more_horiz,
-                      size: 24, color: Color(0xff6589FF)),
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, HomeScreen.id);
+                      },
+                      // show here one is more_horiz and other is the word Done
+                      child: Icon(Icons.more_horiz,
+                          size: 24, color: Color(0xff6589FF))),
                 ),
               ],
             ),
@@ -254,7 +261,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ],
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, StatusScreen.id);
+                    },
                     icon: Icon(
                       Icons.arrow_forward_ios,
                       size: 14.sp,
