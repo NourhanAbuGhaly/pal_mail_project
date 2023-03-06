@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pal_mail_project/utils/constant.dart';
 
-import '../utils/prefs.dart';
-import 'auth/auth.dart';
-import 'home.dart';
+import '../../utils/prefs.dart';
+import '../auth/auth.dart';
+import '../home/home.dart';
 
 class SplachScreen extends StatefulWidget {
   static const String id = 'SplachScreen';

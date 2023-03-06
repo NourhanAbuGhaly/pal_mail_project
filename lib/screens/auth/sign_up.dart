@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../api/Auth/auth_api_controller.dart';
-import '../model/user.dart';
-import '../utils/constant.dart';
-import '../widget/custom_text_filed.dart';
-import '../widget/social.dart';
-import 'home.dart';
+import '../../api/Auth/auth_api_controller.dart';
+import '../../model/user.dart';
+import '../../utils/constant.dart';
+import '../../widget/custom_text_filed.dart';
+import '../../widget/social.dart';
+import '../home/home.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -169,9 +169,20 @@ class _SignUpState extends State<SignUp> {
       user: user,
       BuildContext: context,
     );
-    print(statues);
+    print(' statues ::: $statues');
     if (statues) {
       Navigator.pushReplacementNamed(context, HomeScreen.id);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Sign upSuccessfully',
+            style: TextStyle(fontSize: 22.sp),
+          ),
+          duration: Duration(seconds: 3),
+          padding: EdgeInsets.all(22),
+          backgroundColor: primaryColor,
+        ),
+      );
     }
   }
 

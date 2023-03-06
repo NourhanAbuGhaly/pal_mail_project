@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pal_mail_project/screens/sign_up.dart';
+import 'package:pal_mail_project/screens/auth/sign_up.dart';
 
 import '../../utils/constant.dart';
-import '../login.dart';
+import 'login.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -24,7 +24,11 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(
+      length: 2,
+      vsync: this,
+      animationDuration: const Duration(milliseconds: 850),
+    );
   }
 
   @override
@@ -37,44 +41,37 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
             children: [
               Stack(
                 children: [
-                  ClipPath(
-                    clipper: CurvedBottomClipper(),
-                    child: Container(
-                      width: double.infinity,
-                      height: 359.h,
-                      decoration:const BoxDecoration(
-                          gradient:
-                              LinearGradient(end: Alignment.bottomLeft, colors: [
-                        primaryColor,
-                        Color(0xff6589FF),
-                      ])),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 47.h,
-                          ),
-                          Center(
-                            child: Image.asset(
-                              'images/palestine_bird.png',
-                              width: 56.w,
-                              height: 75.h,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 4.h,
-                          ),
-                          Center(
-                              child: Text(
-                            'ديوان رئيس الوزراء',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )),
-                        ],
+                  Container(
+                    height: 359.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerRight,
+                          end: Alignment.centerLeft,
+                          colors: [primaryColor, blueLightColor]),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(110.r),
+                        bottomLeft: Radius.circular(110.r),
                       ),
                     ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: 44.h,
+                      ),
+                      SizedBox(
+                          height: 75.h,
+                          width: 163.w,
+                          child: Image.asset('images/palestine_bird.png')),
+                      Text(
+                        'ديوان رئيس الوزراء',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.ibmPlexSansArabic(
+                            fontSize: 30, color: Colors.white),
+                      )
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -82,7 +79,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                     child: Container(
                       height: _tabController.index == 1 ? 609.h : 620.h,
                       width: 367.w,
-                      decoration: BoxDecoration(boxShadow:const [
+                      decoration: BoxDecoration(boxShadow: const [
                         BoxShadow(
                           color: Colors.white,
                         )
@@ -98,40 +95,29 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                                   borderRadius: BorderRadius.circular(
                                     30.0.r,
                                   ),
-                                  border: Border.all(color: primaryColor)),
+                                  border: Border.all(color: Colors.grey)),
                               child: TabBar(
-                                dividerColor: Colors.transparent,
-                                controller: _tabController,
-                                indicatorSize: TabBarIndicatorSize.tab,
+                                // dividerColor: Colors.transparent,
+                                // indicatorSize: TabBarIndicatorSize.tab,
 
+                                controller: _tabController,
+                                labelColor: Colors.grey[200],
                                 // give the indicator a decoration (color and border radius)
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
-                                    30.0.r,
+                                    22.0.r,
                                   ),
                                   color: primaryColor,
                                 ),
-                                labelColor: Colors.white,
                                 unselectedLabelColor: primaryColor,
                                 tabs: [
-                                  // first tab [you can add an icon using the icon property]
                                   Tab(
-                                    child: Text(
-                                      'Log In',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 14.sp,
-                                      ),
-                                    ),
+                                    text: 'Log In',
+                                    height: 32.h,
                                   ),
-
-                                  // second tab [you can add an icon using the icon property]
                                   Tab(
-                                    child: Text(
-                                      'Sign Up',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 14.sp,
-                                      ),
-                                    ),
+                                    text: 'sign up',
+                                    height: 32.h,
                                   ),
                                 ],
                               ),
@@ -140,7 +126,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                             Expanded(
                               child: TabBarView(
                                 controller: _tabController,
-                                children: [
+                                children: const [
                                   // first tab bar view widget
                                   Login(),
                                   // second tab bar view widget
@@ -163,39 +149,39 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   }
 }
 
-class CurvedBottomClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    // I've taken approximate height of curved part of view
-    // Change it if you have exact spec for it
-    final roundingHeight = size.height * 3 / 5;
-
-    // this is top part of path, rectangle without any rounding
-    final filledRectangle =
-        Rect.fromLTRB(0, 0, size.width, size.height - roundingHeight);
-
-    // this is rectangle that will be used to draw arc
-    // arc is drawn from center of this rectangle, so it's height has to be twice roundingHeight
-    // also I made it to go 5 units out of screen on left and right, so curve will have some incline there
-    final roundingRectangle = Rect.fromLTRB(
-        -20, size.height - roundingHeight * 2, size.width + 5, size.height);
-
-    final path = Path();
-    path.addRect(filledRectangle);
-
-    // so as I wrote before: arc is drawn from center of roundingRectangle
-    // 2nd and 3rd arguments are angles from center to arc start and end points
-    // 4th argument is set to true to move path to rectangle center, so we don't have to move it manually
-    path.arcTo(roundingRectangle, pi, -pi, true);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    // returning fixed 'true' value here for simplicity, it's not the part of actual question, please read docs if you want to dig into it
-    // basically that means that clipping will be redrawn on any changes
-    return true;
-  }
-}
+// class CurvedBottomClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     // I've taken approximate height of curved part of view
+//     // Change it if you have exact spec for it
+//     final roundingHeight = size.height * 3 / 5;
+//
+//     // this is top part of path, rectangle without any rounding
+//     final filledRectangle =
+//         Rect.fromLTRB(0, 0, size.width, size.height - roundingHeight);
+//
+//     // this is rectangle that will be used to draw arc
+//     // arc is drawn from center of this rectangle, so it's height has to be twice roundingHeight
+//     // also I made it to go 5 units out of screen on left and right, so curve will have some incline there
+//     final roundingRectangle = Rect.fromLTRB(
+//         -20, size.height - roundingHeight * 2, size.width + 5, size.height);
+//
+//     final path = Path();
+//     path.addRect(filledRectangle);
+//
+//     // so as I wrote before: arc is drawn from center of roundingRectangle
+//     // 2nd and 3rd arguments are angles from center to arc start and end points
+//     // 4th argument is set to true to move path to rectangle center, so we don't have to move it manually
+//     path.arcTo(roundingRectangle, pi, -pi, true);
+//     path.close();
+//
+//     return path;
+//   }
+//
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) {
+//     // returning fixed 'true' value here for simplicity, it's not the part of actual question, please read docs if you want to dig into it
+//     // basically that means that clipping will be redrawn on any changes
+//     return true;
+//   }
+// }

@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pal_mail_project/screens/home.dart';
+import 'package:pal_mail_project/screens/home/home.dart';
 
-import '../api/Auth/auth_api_controller.dart';
-import '../utils/constant.dart';
-import '../widget/custom_text_filed.dart';
-import '../widget/social.dart';
+import '../../api/Auth/auth_api_controller.dart';
+import '../../utils/constant.dart';
+import '../../widget/custom_text_filed.dart';
+import '../../widget/social.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -61,8 +61,8 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 71.h,
             ),
-            GestureDetector(
-              onTap: () async {
+            TextButton(
+              onPressed: () async {
                 print('data');
 
                 await _performLogin();
@@ -154,6 +154,18 @@ class _LoginState extends State<Login> {
         BuildContext: context);
     if (statues) {
       Navigator.pushReplacementNamed(context, HomeScreen.id);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Log in Successfully',
+            style: TextStyle(fontSize: 22.sp),
+          ),
+          duration: Duration(seconds: 3),
+          padding: EdgeInsets.all(22),
+          backgroundColor: primaryColor,
+        ),
+      );
     }
+    print('Status :: $statues');
   }
 }

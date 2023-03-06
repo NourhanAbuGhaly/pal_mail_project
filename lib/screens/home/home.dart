@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pal_mail_project/screens/profile.dart';
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/utils/constant.dart';
-import '../widget/category_widget.dart';
-import '../widget/organization_name_box.dart';
-import '../widget/search_box.dart';
-import '../widget/tag_container.dart';
-import 'new_inbox.dart';
+import '../../widget/category_widget.dart';
+import '../../widget/organization_name_box.dart';
+import '../../widget/search_box.dart';
+import '../../widget/tag_container.dart';
+import '../new_inbox.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -61,20 +60,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  child: Icon(Icons.menu),
-                  onTap: () {
-                    Navigator.pushNamed(context, Profile.id);
-                  },
-                ),
+                const Icon(Icons.menu),
                 Row(
                   children: [
                     IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, SearchScreen.id);
                         },
-                        icon: Icon(Icons.search)),
-                    CircleAvatar(
+                        icon: const Icon(Icons.search)),
+                    const CircleAvatar(
                       backgroundImage: AssetImage('images/user.jpg'),
                     ),
                   ],
@@ -103,8 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 25.h),
             child: ExpansionTile(
+              childrenPadding: const EdgeInsets.only(bottom: 20),
               initiallyExpanded: true,
               title: Text(
                 'Official Organization',

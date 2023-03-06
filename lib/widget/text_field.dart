@@ -13,7 +13,6 @@ class TextFiledWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          border: InputBorder.none,
           hintText: hint,
           hintStyle: TextStyle(
               fontWeight: FontWeight.bold,

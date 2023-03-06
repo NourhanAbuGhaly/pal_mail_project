@@ -46,6 +46,7 @@ class SharedPrefController {
   }
 
   bool get LoggedIn => _sharedPreferences.getBool('logged_in') ?? false;
+
   T? getValueFor<T>(String key) {
     if (_sharedPreferences.containsKey(key)) {
       return _sharedPreferences.get(key) as T;

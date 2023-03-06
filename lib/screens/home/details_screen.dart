@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pal_mail_project/screens/home.dart';
+import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:pal_mail_project/screens/status.dart';
 
-import '../utils/constant.dart';
-import '../widget/activity_box.dart';
-import '../widget/bottom_sheet.dart';
-import '../widget/category_container.dart';
+import '../../utils/constant.dart';
+import '../../widget/activity_box.dart';
+import '../../widget/bottom_sheet.dart';
+import '../../widget/category_container.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const String id = "DetailsScreen";
