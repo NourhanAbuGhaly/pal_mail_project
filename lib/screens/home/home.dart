@@ -60,15 +60,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.menu),
+                const Icon(Icons.menu),
                 Row(
                   children: [
                     IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, SearchScreen.id);
                         },
-                        icon: Icon(Icons.search)),
-                    CircleAvatar(
+                        icon: const Icon(Icons.search)),
+                    const CircleAvatar(
                       backgroundImage: AssetImage('images/user.jpg'),
                     ),
                   ],
@@ -97,8 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 25.h),
             child: ExpansionTile(
+              childrenPadding: const EdgeInsets.only(bottom: 20),
               initiallyExpanded: true,
               title: Text(
                 'Official Organization',

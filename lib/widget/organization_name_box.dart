@@ -49,7 +49,7 @@ class OrganizationNameBox extends StatelessWidget {
               style: GoogleFonts.poppins(
                   fontSize: 18.0.sp, fontWeight: FontWeight.w600),
             ),
-            Spacer(),
+            const Spacer(),
             Text(
               date,
               style:
@@ -62,7 +62,7 @@ class OrganizationNameBox extends StatelessWidget {
               onTap: () {
                 Navigator.pushReplacementNamed(context, DetailsScreen.id);
               },
-              child: FaIcon(
+              child: const FaIcon(
                 FontAwesomeIcons.angleRight,
                 size: 12,
                 color: subTitleColor,
@@ -92,6 +92,7 @@ class OrganizationNameBox extends StatelessWidget {
               Visibility(
                 visible: isVisible,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       tags!,

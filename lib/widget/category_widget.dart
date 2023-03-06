@@ -16,9 +16,9 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: blueLightColor,
-      elevation: 3,
+      elevation: 4,
       color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -54,7 +54,7 @@ class CategoryWidget extends StatelessWidget {
               text,
               style: GoogleFonts.poppins(
                   fontSize: 18.sp,
-                  color: Colors.grey,
+                  color: Colors.grey.shade400,
                   fontWeight: FontWeight.bold),
             ),
           ),
