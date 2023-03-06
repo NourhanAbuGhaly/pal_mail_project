@@ -5,6 +5,7 @@ import 'package:pal_mail_project/screens/category.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:pal_mail_project/screens/auth/login.dart';
 import 'package:pal_mail_project/screens/new_inbox.dart';
+import 'package:pal_mail_project/screens/profile.dart';
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/screens/sender_search.dart';
 import 'package:pal_mail_project/screens/serach_filter.dart';
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
             SearchFilter.id: (context) => SearchFilter(),
             TagScreen.id: (context) => TagScreen(),
             SenderSearch.id: (context) => SenderSearch(),
-            SearchScreen.id: (context) => SearchScreen()
+            SearchScreen.id: (context) => SearchScreen(),
+            Profile.id: (context) => Profile(),
           },
         );
       },
