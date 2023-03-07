@@ -30,7 +30,7 @@ class AuthApiController {
       // var data = jsonDecode(response.body)['user'] as User;
       SharedPrefController().save(user: jsonDecode(response.body)['user']);
       print('yaaaaaaaaa${jsonDecode(response.body)['user']}');
-      SharedPrefController().saveToken(token: jsonObject);
+      SharedPrefController().getToken(token: jsonObject);
       // print('${user.token} in api');
 
       return true;
@@ -61,7 +61,8 @@ class AuthApiController {
       print(jsonObject);
       SharedPrefController().save(user: jsonDecode(response.body)['user']);
       print('yaaaaaaaaa${jsonDecode(response.body)['user']}');
-      print(user.email);
+      print("ShareReference done");
+      print("${user.email} emaileofjidfbbhefberi");
       return true;
     } else if (response.statusCode != 500) {
       print('${jsonDecode(response.body)['message']}');

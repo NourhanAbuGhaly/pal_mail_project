@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          const SearchBox(),
+           SearchBox(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GridView.builder(

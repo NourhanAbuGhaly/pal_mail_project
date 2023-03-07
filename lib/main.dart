@@ -5,7 +5,6 @@ import 'package:pal_mail_project/screens/category.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:pal_mail_project/screens/auth/login.dart';
 import 'package:pal_mail_project/screens/new_inbox.dart';
-import 'package:pal_mail_project/screens/profile.dart';
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/screens/sender_search.dart';
 import 'package:pal_mail_project/screens/serach_filter.dart';
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          initialRoute: AuthScreen.id,
+          initialRoute: SearchScreen.id,
           routes: {
             SplachScreen.id: (context) => SplachScreen(),
             AuthScreen.id: (context) => AuthScreen(),
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
             TagScreen.id: (context) => TagScreen(),
             SenderSearch.id: (context) => SenderSearch(),
             SearchScreen.id: (context) => SearchScreen(),
-            Profile.id: (context) => Profile(),
+         //  Profile.id: (context) => Profile(),
           },
         );
       },

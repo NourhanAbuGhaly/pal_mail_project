@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../model/user.dart';
 
 enum PrefKeys { id, name, email, password, token, loggedIn, code }
@@ -19,34 +18,20 @@ class SharedPrefController {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  Future<void> save({required Map<String, dynamic> user}) async {
+  Future<void> save({required User user}) async {
     await _sharedPreferences.setBool('logged_in', true);
-    await _sharedPreferences.setInt('id', user['id']);
-    print('${_sharedPreferences.getInt('id')}');
-    await _sharedPreferences.setString('email', user['email']);
-
-    await _sharedPreferences.setString('name', user['name']);
+    // await _sharedPreferences.setString('id', user.id);
+    await _sharedPreferences.setString('email', user.email);
+    await _sharedPreferences.setString('password_confirmation', user.password);
+    await _sharedPreferences.setString('name', user.name);
   }
 
-  Future<void> saveToken({required String token}) async {
+  Future<void> getToken({required String token}) async {
     await _sharedPreferences.setBool('logged_in', true);
     await _sharedPreferences.setString('token', 'Bearer ${token}');
   }
 
-  int? getID({required String key}) {
-    return _sharedPreferences.getInt(key);
-  }
-
-  String? getName({required String key}) {
-    return _sharedPreferences.getString(key);
-  }
-
-  String? getEmail({required String key}) {
-    return _sharedPreferences.getString(key);
-  }
-
   bool get LoggedIn => _sharedPreferences.getBool('logged_in') ?? false;
-
   T? getValueFor<T>(String key) {
     if (_sharedPreferences.containsKey(key)) {
       return _sharedPreferences.get(key) as T;

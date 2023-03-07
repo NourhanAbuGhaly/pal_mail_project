@@ -12,6 +12,7 @@ class SearchBox extends StatelessWidget {
       padding:
           EdgeInsets.only(left: 15.0.w, right: 15.0.w, top: 15.h, bottom: 25.h),
         child: TextField(
+
           decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           contentPadding:const  EdgeInsets.symmetric(vertical: 16),

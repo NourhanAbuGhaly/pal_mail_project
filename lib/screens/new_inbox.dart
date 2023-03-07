@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:pal_mail_project/screens/tag_screen.dart';
+
 import '../utils/constant.dart';
 import '../widget/custom_header.dart';
 
@@ -17,25 +17,9 @@ class NewInbox extends StatefulWidget {
 }
 
 class _NewInboxState extends State<NewInbox> {
-  late TextEditingController date;
-  DateTime datetime =DateTime.now();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    date=TextEditingController();
-  }
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    date.dispose();
-    super.dispose();
-  }
   bool isExpanded2 = false;
-  // File? image;
-  Future pickImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +31,13 @@ class _NewInboxState extends State<NewInbox> {
           child: ListView(
             children: [
               InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, HomeScreen.id);
-                },
-                child: const CustomHeader(
+                onTap: (){Navigator.pushNamed(context,HomeScreen.id );},
+                child: CustomHeader(
                   title: 'New Inbox',
                 ),
               ),
               SizedBox(
-                height: 50.h,
+                height: 16.h,
               ),
               Container(
                 decoration: inboxDecoration,
@@ -70,7 +52,7 @@ class _NewInboxState extends State<NewInbox> {
                             padding: EdgeInsets.only(
                               right: 9.w,
                             ),
-                            child: const Icon(
+                            child: Icon(
                               Icons.perm_identity,
                               color: Color(0xff707070),
                             ),
@@ -78,11 +60,11 @@ class _NewInboxState extends State<NewInbox> {
                           Text(
                             'Sender',
                             style: GoogleFonts.poppins(
-                                color: const Color(0xffAFAFAF),
+                                color: Color(0xffAFAFAF),
                                 fontSize: 18.0.sp,
                                 fontWeight: FontWeight.w600),
                           ),
-                          const Spacer(),
+                          Spacer(),
                           FaIcon(
                             FontAwesomeIcons.circleInfo,
                             size: 24.sp,
@@ -90,7 +72,7 @@ class _NewInboxState extends State<NewInbox> {
                           ),
                         ],
                       ),
-                      const Divider(
+                      Divider(
                         thickness: .3,
                         color: subTitleColor,
                       ),
@@ -102,7 +84,7 @@ class _NewInboxState extends State<NewInbox> {
                               fontSize: 18.0.sp,
                             ),
                           ),
-                          const Spacer(),
+                          Spacer(),
                           Text(
                             'others',
                             style: GoogleFonts.poppins(
@@ -135,11 +117,11 @@ class _NewInboxState extends State<NewInbox> {
                       Text(
                         'Title of mail',
                         style: GoogleFonts.poppins(
-                            color: const Color(0xffAFAFAF),
+                            color: Color(0xffAFAFAF),
                             fontSize: 18.0.sp,
                             fontWeight: FontWeight.w600),
                       ),
-                      const Divider(
+                      Divider(
                         thickness: .3,
                         color: subTitleColor,
                       ),
@@ -170,7 +152,7 @@ class _NewInboxState extends State<NewInbox> {
                             padding: EdgeInsets.only(
                               right: 9.w,
                             ),
-                            child: const FaIcon(
+                            child: FaIcon(
                               FontAwesomeIcons.calendar,
                               size: 22,
                               color: Colors.red,
@@ -185,37 +167,18 @@ class _NewInboxState extends State<NewInbox> {
                                   fontSize: 18.0.sp,
                                 ),
                               ),
-                              InkWell(
-                                onTap: () async {
-                                  DateTime? newDate= await showDatePicker(
-                                      context: context,
-                                      initialDate: datetime,
-                                      firstDate: DateTime(2000),
-                                      lastDate: DateTime(2100));
-                                      // .then((value) {
-                                      //   setState(() {
-                                      //   datetime=value!;
-                                      // });
-                                      // });
-                                  setState((){
-                                    if(newDate==null) return;
-                                    datetime=newDate;
-                                  });
-
-                                },
-                                child: Text(
-                                 "${datetime.year}-${datetime.month}-${datetime.day}",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14.0.sp,
-                                    color: seconderyColor,
-                                  ),
+                              Text(
+                                'Tuesday, July 5, 2022',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14.0.sp,
+                                  color: seconderyColor,
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      const Divider(
+                      Divider(
                         thickness: .3,
                         color: subTitleColor,
                       ),
@@ -225,7 +188,7 @@ class _NewInboxState extends State<NewInbox> {
                             padding: EdgeInsets.only(
                               right: 9.w,
                             ),
-                            child: const FaIcon(
+                            child: FaIcon(
                               FontAwesomeIcons.fileZipper,
                               size: 22,
                               color: Color(0xff6F7CA7),
@@ -272,12 +235,12 @@ class _NewInboxState extends State<NewInbox> {
                           Text(
                             '#',
                             style: GoogleFonts.poppins(
-                                color: const Color(0xff707070),
+                                color: Color(0xff707070),
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.w600),
                           ),
                           SizedBox(
-                            width: 10.w,
+                            width: 16.w,
                           ),
                           Text(
                             'Tags ',
@@ -318,7 +281,7 @@ class _NewInboxState extends State<NewInbox> {
                           FaIcon(
                             FontAwesomeIcons.tag,
                             size: 24.sp,
-                            color: const Color(0xff707070),
+                            color: Color(0xff707070),
                           ),
                           SizedBox(
                             width: 16.w,
@@ -328,7 +291,7 @@ class _NewInboxState extends State<NewInbox> {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(30.r)),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 15),
+                              padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 'Inbox',
                                 style: GoogleFonts.poppins(
@@ -433,7 +396,7 @@ class _NewInboxState extends State<NewInbox> {
                                   child: CircleAvatar(
                                     radius: 12.r,
                                     backgroundImage:
-                                        const AssetImage('images/user.jpg'),
+                                        AssetImage('images/user.jpg'),
                                   ),
                                 ),
                                 Text(
@@ -442,7 +405,7 @@ class _NewInboxState extends State<NewInbox> {
                                       fontSize: 18.0.sp,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                const Spacer(),
+                                Spacer(),
                                 Text(
                                   'Today, 11:00 AM',
                                   style: GoogleFonts.poppins(
@@ -451,7 +414,7 @@ class _NewInboxState extends State<NewInbox> {
                                 SizedBox(
                                   width: 8.w,
                                 ),
-                                const FaIcon(
+                                FaIcon(
                                   FontAwesomeIcons.angleRight,
                                   size: 12,
                                   color: subTitleColor,
@@ -558,33 +521,33 @@ class _NewInboxState extends State<NewInbox> {
                     ),
                     suffixIcon: IconButton(
                         onPressed: () {},
-                        icon: const Icon(
+                        icon: Icon(
                           FontAwesomeIcons.paperPlane,
                           color: primaryColor,
                         )),
-                     prefixIcon: Padding(
+                    prefixIcon: Padding(
                       padding: EdgeInsets.only(right: 9.w, left: 16.w),
                       child: CircleAvatar(
                         radius: 12.r,
-                        backgroundImage: const AssetImage(
+                        backgroundImage: AssetImage(
                           'images/user.jpg',
                         ),
                       ),
                     ),
                     border: OutlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
                         borderRadius: BorderRadius.circular(50.r)),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.r),
-                      borderSide:const  BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.r),
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: primaryColor,
                       ),
                     )),
