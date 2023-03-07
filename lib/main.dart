@@ -18,7 +18,7 @@ import 'package:pal_mail_project/utils/prefs.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefController().initPreferences();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
