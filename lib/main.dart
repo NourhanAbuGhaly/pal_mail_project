@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          initialRoute: SearchScreen.id,
+          initialRoute: SplachScreen.id,
           routes: {
             SplachScreen.id: (context) => SplachScreen(),
             AuthScreen.id: (context) => AuthScreen(),
