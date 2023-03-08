@@ -18,12 +18,12 @@ class SharedPrefController {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  Future<void> save({required User user}) async {
+  Future<void> save({required User user,required String password}) async {
     await _sharedPreferences.setBool('logged_in', true);
-    // await _sharedPreferences.setString('id', user.id);
-    await _sharedPreferences.setString('email', user.email);
-    await _sharedPreferences.setString('password_confirmation', user.password);
-    await _sharedPreferences.setString('name', user.name);
+    await _sharedPreferences.setString('id', user.id.toString());
+    await _sharedPreferences.setString('email', user.email.toString());
+    await _sharedPreferences.setString('password_confirmation',password);
+    await _sharedPreferences.setString('name', user.name.toString());
   }
 
   Future<void> getToken({required String token}) async {

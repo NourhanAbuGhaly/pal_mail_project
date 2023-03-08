@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pal_mail_project/model/user.dart';
 import 'package:pal_mail_project/screens/auth/auth.dart';
 import 'package:pal_mail_project/screens/category.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ScreenUtilInit(
       minTextAdapt: true,
       designSize: const Size(428, 926),
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
             AuthScreen.id: (context) => AuthScreen(),
             Login.id: (context) => Login(),
             SignUp.id: (context) => SignUp(),
-            HomeScreen.id: (context) => HomeScreen(),
+           // HomeScreen.id: (context) => HomeScreen(),
             DetailsScreen.id: (context) => DetailsScreen(),
             NewInbox.id: (context) => NewInbox(),
             StatusScreen.id: (context) => StatusScreen(),

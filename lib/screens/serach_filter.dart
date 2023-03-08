@@ -47,7 +47,7 @@ class _SearchFilterState extends State<SearchFilter> {
                       ],
                     ),
                     const Divider(),
-                    Padding(
+                   const Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
                         "NGOs",
@@ -55,7 +55,7 @@ class _SearchFilterState extends State<SearchFilter> {
                       ),
                     ),
                     const Divider(),
-                    Padding(
+                    const    Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
                         "UnBorder",
@@ -63,7 +63,7 @@ class _SearchFilterState extends State<SearchFilter> {
                       ),
                     ),
                     const Divider(),
-                    Padding(
+                    const     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
                         "Others",
@@ -73,7 +73,7 @@ class _SearchFilterState extends State<SearchFilter> {
                   ],
                 ),
               ),
-              SizedBox(
+              const     SizedBox(
                 height: 5,
               ),
               Container(

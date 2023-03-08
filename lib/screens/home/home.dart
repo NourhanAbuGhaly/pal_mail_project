@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pal_mail_project/model/user.dart';
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/utils/constant.dart';
 import '../../widget/category_widget.dart';
@@ -11,7 +12,10 @@ import '../../widget/tag_container.dart';
 import '../new_inbox.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+  final User data;
+
+     HomeScreen({super.key,required this.data});
   static const String id = 'home';
 
   @override
@@ -19,6 +23,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+// void p(){
+//     print(widget.data!.token.toString());
+//   }
   final String organizationName = 'Organization Name',
       date = 'Today, 11:00 AM',
       other =
@@ -65,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
+
                           Navigator.pushNamed(context, SearchScreen.id);
                         },
                         icon: const Icon(Icons.search)),
