@@ -23,14 +23,22 @@ Future<ApiResponse> createMail({required Mail mail})async{
    "final_decision":mail.final_decision,
    "tags":mail.tage,
    "activities":mail.activites
+     //   "activities":jsonEncode({},{});
+     //   "tags":mail.tage,
    });
    apiResponse.data=Mail.fromJson(jsonDecode(response.body));
    return  apiResponse;
-
 }
 
+Future<ApiResponse> GetAllMAil()async{
+ ApiResponse apiResponse = ApiResponse();
+ final http.Response response = await http.get(Uri.parse('$mailsURL'),
+     headers: {
+      "Accept": "application/json"},
+     );
+ apiResponse.data=Mail.fromJson(jsonDecode(response.body));
+ return  apiResponse;
 
-
-
+}
 
 }
