@@ -17,5 +17,24 @@ class SenderApiController{
     return apiResponse;
   }
 
+  Future<ApiResponse> createSender({required Sender sender}) async {
+    ApiResponse apiResponse = ApiResponse();
+    final http.Response response =
+    await http.post(Uri.parse(sendersURL), headers: {
+      "Accept": "application/json"
+    }, body: {
+      "subject": sender.id,
+      "description": sender.name,
+      "sender_id": sender.mobile,
+      "archive_number": sender.address,
+      "archive_date": sender.category_id,
+      "decision": sender.cretaed_at,
+      "update_at": sender.update_at,
+      "category": sender.category,
+    });
+    apiResponse.data = Sender.fromJson(jsonDecode(response.body));
+    return apiResponse;
+  }
+
 
 }
