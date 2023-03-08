@@ -9,21 +9,21 @@ class StatusApiController {
   Future<ApiResponse> GetAllStatus({required bool mail}) async {
     ApiResponse apiResponse = ApiResponse();
     http.Response response = await http.get(
-      Uri.parse("${statusesURL}?mail=${mail}"),
+      Uri.parse("${ApiSettings.statusesURL}?mail=${mail}"),
       headers: {"Accept": "application/json"},
     );
-  apiResponse.data=Statuses.fromJson(jsonDecode(response.body));
+    apiResponse.data = Statuses.fromJson(jsonDecode(response.body));
     return apiResponse;
   }
 
-  Future<ApiResponse> GetSingleStatus({required bool mail,required int num}) async {
+  Future<ApiResponse> GetSingleStatus(
+      {required bool mail, required int num}) async {
     ApiResponse apiResponse = ApiResponse();
     http.Response response = await http.get(
-      Uri.parse("${statusesURL}/${num}?mail=${mail}"),
+      Uri.parse("${ApiSettings.statusesURL}/${num}?mail=${mail}"),
       headers: {"Accept": "application/json"},
     );
-    apiResponse.data=Statuses.fromJson(jsonDecode(response.body));
+    apiResponse.data = Statuses.fromJson(jsonDecode(response.body));
     return apiResponse;
   }
-
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pal_mail_project/model/user.dart';
+
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/utils/constant.dart';
 import '../../widget/category_widget.dart';
@@ -10,12 +10,10 @@ import '../../widget/organization_name_box.dart';
 import '../../widget/search_box.dart';
 import '../../widget/tag_container.dart';
 import '../new_inbox.dart';
+import '../profile.dart';
 
 class HomeScreen extends StatefulWidget {
-
-  final User data;
-
-     HomeScreen({super.key,required this.data});
+  HomeScreen({super.key});
   static const String id = 'home';
 
   @override
@@ -68,12 +66,16 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.menu),
+                InkWell(
+                  child: Icon(Icons.menu),
+                  onTap: () {
+                    Navigator.pushNamed(context, Profile.id);
+                  },
+                ),
                 Row(
                   children: [
                     IconButton(
                         onPressed: () {
-
                           Navigator.pushNamed(context, SearchScreen.id);
                         },
                         icon: const Icon(Icons.search)),
@@ -85,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-           SearchBox(),
+          SearchBox(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GridView.builder(
@@ -107,37 +109,39 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 25.h),
-            child: ExpansionTile(
-              childrenPadding: const EdgeInsets.only(bottom: 20),
-              initiallyExpanded: true,
-              title: Text(
-                'Official Organization',
-                style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 20.0.sp,
-                    fontWeight: FontWeight.w600),
-              ),
-              children: [
-                Container(
-                  decoration: inboxDecoration,
-                  padding: const EdgeInsets.all(16),
-                  child: OrganizationNameBox(
-                    organizationName: organizationName,
-                    date: date,
-                    subject: subject,
-                    other: other,
-                    isVisible: true,
-                    color: blueLightColor,
-                    tags: tags,
-                    image: image,
-                  ),
+            child: Theme(
+              data: ThemeData().copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                childrenPadding: const EdgeInsets.only(bottom: 20),
+                initiallyExpanded: true,
+                title: Text(
+                  'Official Organization',
+                  style: GoogleFonts.poppins(
+                      color: Colors.black,
+                      fontSize: 20.0.sp,
+                      fontWeight: FontWeight.w600),
                 ),
-              ],
+                children: [
+                  Container(
+                    decoration: inboxDecoration,
+                    padding: const EdgeInsets.all(16),
+                    child: OrganizationNameBox(
+                      organizationName: organizationName,
+                      date: date,
+                      subject: subject,
+                      other: other,
+                      isVisible: true,
+                      color: blueLightColor,
+                      tags: tags,
+                      image: image,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(
-              right: 36.w,
               left: 36.w,
               top: 15.h,
             ),
