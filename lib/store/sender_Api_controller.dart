@@ -35,6 +35,48 @@ class SenderApiController{
     apiResponse.data = Sender.fromJson(jsonDecode(response.body));
     return apiResponse;
   }
+  Future<ApiResponse> GetSingleSender({required bool mail,required int num}) async {
+    ApiResponse apiResponse = ApiResponse();
+    http.Response response = await http.get(
+      Uri.parse("${sendersURL}/${num}?mail=${mail}"),
+      headers: {"Accept": "application/json"},
+    );
+    apiResponse.data=Sender.fromJson(jsonDecode(response.body));
+    return apiResponse;
+  }
+
+  Future<ApiResponse> PutUpdateSender({required Sender sender}) async {
+    ApiResponse apiResponse = ApiResponse();
+    http.Response response = await http.put(
+      Uri.parse("${sendersURL}/${sender.id}"),
+      headers: {"Accept": "application/json"},
+      body: {
+        "name":sender.name,
+        "mobile":sender.mobile,
+        "address":sender.address,
+        "category_id":sender.category_id
+      }
+    );
+    apiResponse.data=Sender.fromJson(jsonDecode(response.body));
+    return apiResponse;
+  }
+  Future<ApiResponse> DeldeleteSender({required Sender sender}) async {
+    ApiResponse apiResponse = ApiResponse();
+    http.Response response = await http.put(
+        Uri.parse("${sendersURL}/${sender.id}"),
+        headers: {"Accept": "application/json"},
+        body: {
+          "name":sender.name,
+          "mobile":sender.mobile,
+          "address":sender.address,
+          "category_id":sender.category_id
+        }
+    );
+    apiResponse.data=Sender.fromJson(jsonDecode(response.body));
+    return apiResponse;
+  }
+
+
 
 
 }
