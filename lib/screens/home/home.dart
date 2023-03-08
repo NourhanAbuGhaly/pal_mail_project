@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pal_mail_project/model/user.dart';
 import 'package:pal_mail_project/screens/search_screen.dart';
 import 'package:pal_mail_project/utils/constant.dart';
+import '../../api/store/mail_api_controller.dart';
+import '../../model/mail.dart';
 import '../../widget/category_widget.dart';
 import '../../widget/organization_name_box.dart';
 import '../../widget/search_box.dart';
@@ -12,10 +14,9 @@ import '../../widget/tag_container.dart';
 import '../new_inbox.dart';
 
 class HomeScreen extends StatefulWidget {
-
   final User data;
 
-     HomeScreen({super.key,required this.data});
+  HomeScreen({super.key, required this.data});
   static const String id = 'home';
 
   @override
@@ -23,6 +24,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future<List<Mail>> mail = MailApiService.getAllMails();
+    print('MailApiService :: ${MailApiService.getAllMails()}');
+    // MailApiService.getAll();
+  }
+
   @override
 // void p(){
 //     print(widget.data!.token.toString());
@@ -73,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
-
                           Navigator.pushNamed(context, SearchScreen.id);
                         },
                         icon: const Icon(Icons.search)),
@@ -85,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-           SearchBox(),
+          SearchBox(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GridView.builder(

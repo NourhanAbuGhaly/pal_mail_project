@@ -5,10 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 class CategoryContainer extends StatelessWidget {
   final String text;
   final Color color;
+  final fontColor;
 
   const CategoryContainer({
     required this.text,
     required this.color,
+    this.fontColor = Colors.black,
     super.key,
   });
 
@@ -22,9 +24,7 @@ class CategoryContainer extends StatelessWidget {
         child: Text(
           text,
           style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w600,
-              fontSize: 16.sp,
-              color: Colors.black),
+              fontWeight: FontWeight.w600, fontSize: 16.sp, color: fontColor),
         ),
       ),
     );

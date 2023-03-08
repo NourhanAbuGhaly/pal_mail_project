@@ -10,7 +10,6 @@ import 'package:pal_mail_project/model/user.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:pal_mail_project/utils/prefs.dart';
-import '../../api/Auth/auth_api_controller.dart';
 import '../../utils/constant.dart';
 import '../../widget/custom_text_filed.dart';
 import '../../widget/social.dart';
@@ -71,7 +70,10 @@ class _LoginState extends State<Login> {
               onPressed: () async {
                 print('data');
 
-                await _performLogin(_emailController.text.toString(),_passwordController.text.toString());
+                await _performLogin('aml@mail.com', '123456'
+                    // _emailController.text.toString(),
+                    // _passwordController.text.toString()
+                    );
               },
               child: Container(
                 width: double.infinity,
@@ -142,7 +144,6 @@ class _LoginState extends State<Login> {
       }, body: {
         "email": email,
         "password": password,
-
       });
       print(responce.body);
       print(responce.statusCode);
@@ -151,15 +152,18 @@ class _LoginState extends State<Login> {
           {
             print("jkbrfjhf");
             apiResponse.data = User.fromJson(jsonDecode(responce.body));
-            User user=apiResponse.data as User;
-           String pass=_passwordController.text.toString();
+            User user = apiResponse.data as User;
+            String pass = _passwordController.text.toString();
             save(user: user, pass: pass);
             print(user.token);
             print("regiseter secuss");
             //Navigator.pushNamed(context, HomeScreen.id,arguments: HomeScreen(data: user,));
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>  HomeScreen(data: user,)),
+              MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                        data: user,
+                      )),
             );
             break;
           }
@@ -181,13 +185,13 @@ class _LoginState extends State<Login> {
       print("User Service :" + e.toString());
     }
   }
-  Future <void> clear()async{
-    await SharedPrefController().clear();
 
+  Future<void> clear() async {
+    await SharedPrefController().clear();
   }
 
-  Future<void > save({required User user ,required String pass })async{
-    await SharedPrefController().save(user: user, password:pass );
+  Future<void> save({required User user, required String pass}) async {
+    await SharedPrefController().save(user: user, password: pass);
   }
 // Future<void> _performLogin() async {
 //   if (_checkData()) {
