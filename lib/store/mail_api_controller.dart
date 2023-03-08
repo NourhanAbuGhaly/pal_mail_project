@@ -28,9 +28,15 @@ Future<ApiResponse> createMail({required Mail mail})async{
    return  apiResponse;
 
 }
+Future<ApiResponse> AllMAil()async{
+ ApiResponse apiResponse = ApiResponse();
+ final http.Response response = await http.get(Uri.parse('$mailsURL'),
+     headers: {
+      "Accept": "application/json"},
+     );
+ apiResponse.data=Mail.fromJson(jsonDecode(response.body));
+ return  apiResponse;
 
-
-
-
+}
 
 }
