@@ -20,16 +20,15 @@ Activites({
   this.updated_at
 });
 Activites.fromJson(Map<String, dynamic> json) {
-  id = json["id"];
-  body = json["body"];
-  user_id = json["user_id"];
-  mail_id = json["mail_id"];
-  send_number = json["send_number"]?? Null;
-  send_date = json["send_date"]?? Null;
-  send_destination = json["send_destination"]?? Null;
-  created_at = DateTime.tryParse(json["created_at"]);
-
-  updated_at = DateTime.tryParse(json["updated_at"]);
+  id = json["activities"]["id"];
+  body = json["activities"]["body"];
+  user_id = json["activities"]["user_id"];
+  mail_id = json["activities"]["mail_id"];
+  send_number = json["activities"]["send_number"]?? Null;
+  send_date = json["activities"]["send_date"]?? Null;
+  send_destination = json["activities"]["send_destination"]?? Null;
+  created_at = DateTime.tryParse(json["activities"]["created_at"]);
+  updated_at = DateTime.tryParse(json["activities"]["updated_at"]);
 }
 Map<String, dynamic> toJson() {
   final Map<String, dynamic> data = Map<String, dynamic>();

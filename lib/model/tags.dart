@@ -52,8 +52,8 @@ class Pivot{
   String? mail_id;
   String? tag_id;
   Pivot.fromJson(Map<String, dynamic> json) {
-    mail_id=json["mail_id"];
-    tag_id=json["tag_id"];
+    mail_id=json["pivot"]["mail_id"];
+    tag_id=json["pivot"]["tag_id"];
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
