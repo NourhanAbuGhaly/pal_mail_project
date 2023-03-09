@@ -8,8 +8,8 @@ class User {
   String? emailVerifiedAt;
   String? roleId;
   String? token;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   Role? role;
 
   User(
@@ -28,13 +28,15 @@ class User {
     id = json['user']['id'];
     name = json['user']['name'];
     email = json['user']['email'];
-    image = json["user"]['image']??" ";
-    emailVerifiedAt = json["user"]['email_verified_at'];
+    image = json["user"]['image'] ?? " ";
+    emailVerifiedAt = json["user"]['email_verified_at']??" ";
     roleId = json["user"]['role_id'];
     token = json["token"];
-    createdAt = json["user"]['created_at'];
-    updatedAt = json["user"]['updated_at'];
-    role = Role.fromJson(json["user"]["role"]);
+    createdAt =DateTime.tryParse( json["user"]['created_at']);
+    updatedAt = DateTime.tryParse(json["user"]['updated_at']);
+    role = json["user"]["role"] != null
+        ? Role.fromJson(json["user"]["role"])
+        : null;
   }
 
   Map<String, dynamic> toJson() {

@@ -115,10 +115,10 @@ import 'package:pal_mail_project/model/user.dart';
 class Role {
   int? id;
   String? name;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   String? users_count;
-  User? users;
+  List<User>? users;
 
   Role(
       {this.id,
@@ -129,12 +129,12 @@ class Role {
       this.users});
 
   Role.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    users_count = json["users_count"];
-    users = json["users"];
+    id = json['role']['id'];
+    name = json['role']['name'];
+    createdAt = DateTime.tryParse(json['role']['created_at']);
+    updatedAt = DateTime.tryParse(json['role']['updated_at']);
+    users_count = json['role']["users_count"];
+    users = json['role']["users"];
   }
 
   Map<String, dynamic> toJson() {

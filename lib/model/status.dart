@@ -1,25 +1,25 @@
-class StatusData {
-  List<Statuses>? statuses;
-
-  StatusData({this.statuses});
-
-  StatusData.fromJson(Map<String, dynamic> json) {
-    if (json['statuses'] != null) {
-      statuses = <Statuses>[];
-      json['statuses'].forEach((v) {
-        statuses!.add(Statuses.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (statuses != null) {
-      data['statuses'] = statuses!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
+// class StatusData {
+//   List<Statuses>? statuses;
+//
+//   StatusData({this.statuses});
+//
+//   StatusData.fromJson(Map<String, dynamic> json) {
+//     if (json['statuses'] != null) {
+//       statuses = <Statuses>[];
+//       json['statuses'].forEach((v) {
+//         statuses!.add(Statuses.fromJson(v));
+//       });
+//     }
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = <String, dynamic>{};
+//     if (statuses != null) {
+//       data['statuses'] = statuses!.map((v) => v.toJson()).toList();
+//     }
+//     return data;
+//   }
+// }
 
 class Statuses {
   int? id;
@@ -38,12 +38,12 @@ class Statuses {
       this.mailsCount});
 
   Statuses.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    color = json['color'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    mailsCount = json['mails_count'];
+    id = json['statuses']['id'];
+    name = json['statuses']['name'];
+    color = json['statuses']['color'];
+    createdAt = json['statuses']['created_at'];
+    updatedAt = json['statuses']['updated_at'];
+    mailsCount = json['statuses']['mails_count'];
   }
 
   Map<String, dynamic> toJson() {

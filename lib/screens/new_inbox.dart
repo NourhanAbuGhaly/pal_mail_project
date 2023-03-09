@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pal_mail_project/screens/category.dart';
 import 'package:pal_mail_project/screens/home/home.dart';
 import 'package:pal_mail_project/screens/tag_screen.dart';
 
@@ -85,10 +86,14 @@ class _NewInboxState extends State<NewInbox> {
                             ),
                           ),
                           Spacer(),
-                          Text(
-                            'others',
-                            style: GoogleFonts.poppins(
-                                fontSize: 14.0.sp, color: subTitleColor),
+                          InkWell(onTap: (){
+                            Navigator.pushNamed(context, CategoryScreen.id);
+                          },
+                            child: Text(
+                              'others',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14.0.sp, color: subTitleColor),
+                            ),
                           ),
                           SizedBox(
                             width: 8.w,
@@ -508,7 +513,9 @@ class _NewInboxState extends State<NewInbox> {
                 height: 16.h,
               ),
               TextField(
+
                 decoration: InputDecoration(
+
                     filled: true,
                     fillColor: const Color(0xffEEEEF6),
                     hintText: 'Add new Activity …',

@@ -92,8 +92,8 @@ class Mail {
   String? decision;
   String? status_id;
   String? final_decision;
-  String? created_at;
-  String? update_at;
+  DateTime? created_at;
+  DateTime? update_at;
   List<Sender>? sender;
   List<Status>? status;
   List<Tags>? tage;
@@ -106,7 +106,7 @@ class Mail {
       this.description,
       this.sender_id,
       this.archive_number,
-        this.archive_date,
+      this.archive_date,
       this.decision,
       this.status_id,
       this.final_decision,
@@ -120,22 +120,22 @@ class Mail {
 
   Mail.fromJson(Map<String, dynamic> json) {
     //id=json["data"][0]["id"];
-    id = json["id"];
-    subject = json["subject"];
-    description = json["description"];
-    sender_id = json["sender_id"];
-    archive_number = json["archive_number"];
-    archive_date=json["archive_date"];
-    description = json["description"];
-    status_id = json["status_id"];
-    final_decision = json["final_decision"];
-    created_at = json["created_at"];
-    update_at = json["update_at"];
-    sender = json["sender"];
-    status = json["status"];
-    tage = json["tage"];
-    attachement = json["attachement"];
-    activites = json["activites"];
+    id = json["mail"]["id"];
+    subject = json["mail"]["subject"];
+    description = json["mail"]["description"];
+    sender_id = json["mail"]["sender_id"];
+    archive_number = json["mail"]["archive_number"];
+    archive_date=json["mail"]["archive_date"];
+    decision = json["mail"]["decision"];
+    status_id = json["mail"]["status_id"];
+    final_decision = json["mail"]["final_decision"]?? Null;
+    created_at = DateTime.tryParse(json["mail"]["created_at"]);
+    update_at = DateTime.tryParse(json["mail"]["update_at"]);
+    sender = json["mail"]["sender"];
+    status = json["mail"]["status"];
+    tage = json["mail"]["tage"];
+    attachement = json["mail"]["attachement"];
+    activites = json["mail"]["activites"];
   }
 
 
@@ -148,7 +148,7 @@ class Mail {
     data["sender_id"] = sender_id;
     data["archive_number"] = archive_number;
     data["archive_date"]=archive_date;
-    data["description"] = description;
+    data["decision"] = decision;
     data["status_id"] = status_id;
     data["final_decision"] = final_decision;
     data["created_at"] = created_at;

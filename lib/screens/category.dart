@@ -19,9 +19,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CustomHeader(title: 'Category'),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 24,
+                      color: Colors.blue,
+                    )),
+                Text('Category'),
+              ],
+            ),
             SizedBox(
-              height: 40,
+              height: 30,
             ),
             Container(
               padding: EdgeInsets.all(12.0),

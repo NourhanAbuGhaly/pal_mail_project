@@ -22,9 +22,9 @@ class _SplachScreenState extends State<SplachScreen> {
     Future.delayed(
       Duration(seconds: 3),
       () {
-        String route =
-            SharedPrefController().LoggedIn ? HomeScreen.id : AuthScreen.id;
-        Navigator.pushReplacementNamed(context, route);
+//    String route =
+        //    SharedPrefController().LoggedIn ? HomeScreen.id : AuthScreen.id;
+        Navigator.pushReplacementNamed(context, AuthScreen.id);
       },
     );
     super.initState();
